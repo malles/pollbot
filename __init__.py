@@ -211,6 +211,8 @@ def pool(bot, event, pool_id=None, cmd=None, *args):
         html += "<i>View current bets of pool:</i><br/>/bot pool <id><br/>"
         html += "<i>Place a bet for pool:</i><br/>/bot pool <id> bet (<value>)<br/>"
         html += "<i>This help:</i><br/>/bot pool help<br/>"
+        html += "<i>More help:</i><br/>" \
+                "<a href='https://github.com/malles/poolbot'>https://github.com/malles/poolbot</a><br/>"
     elif pool_id:
         try:
             pool_id.index("||")
@@ -300,6 +302,9 @@ def poolbot(bot, event, pool_id=None, cmd=None, *args):
         html += "<i>Set answer:</i><br/>/bot poolbot <id> answer <answer><br/>"
         html += "<i>Set winner manually:</i><br/>/bot poolbot <id> winner <winnerslist><br/>"
         html += "<i>Announce winner:</i><br/>/bot poolbot <id> announce<br/>"
+        html += "<i>This help:</i><br/>/bot pool help<br/>"
+        html += "<i>More help:</i><br/>" \
+                "<a href='https://github.com/malles/poolbot'>https://github.com/malles/poolbot</a><br/>"
     elif pool_id:
         try:
             pool_id.index("||")
