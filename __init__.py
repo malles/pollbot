@@ -37,7 +37,7 @@ class PoolBots:
         yield from bot.coro_send_message(target_conv, message)
 
     @staticmethod
-    def user_in_converation(bot, conv_id, user):
+    def user_in_conversation(bot, conv_id, user):
         logger.info(" conv_id: {}".format(conv_id))
         if bot.memory.exists(["convmem", conv_id, "participants"]):
             return user.id_.chat_id in bot.memory.get_by_path(["convmem", conv_id, "participants"])
@@ -219,7 +219,7 @@ def pool(bot, event, pool_id=None, cmd=None, *args):
             conv_id = pool_id[:pool_id.index("||")].strip()
             logger.info("Voting secretly for conv_id: {}".format(conv_id))
             pool_id = int(pool_id[pool_id.index("||") + 2:])
-            if not _poolbots.user_in_converation(bot, conv_id, event.user):
+            if not _poolbots.user_in_conversation(bot, conv_id, event.user):
                 yield from bot.coro_send_message(event.conv_id, "You are not in that conversation!")
                 return
 
@@ -311,7 +311,7 @@ def poolbot(bot, event, pool_id=None, cmd=None, *args):
             conv_id = pool_id[:pool_id.index("||")].strip()
             logger.info("Voting secretly for conv_id: {}".format(conv_id))
             pool_id = int(pool_id[pool_id.index("||") + 2:])
-            if not _poolbots.user_in_converation(bot, conv_id, event.user):
+            if not _poolbots.user_in_conversation(bot, conv_id, event.user):
                 yield from bot.coro_send_message(event.conv_id, "You are not in that conversation!")
                 return
 
